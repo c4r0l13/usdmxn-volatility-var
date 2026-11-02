@@ -1,0 +1,237 @@
+{
+  "sample": {
+    "start": "1996-01-03",
+    "end": "2026-10-23",
+    "n_returns": 7728,
+    "test_start": "2010-01-01",
+    "test_days": 4205
+  },
+  "part_a_point_forecasts": [
+    {
+      "model": "random_walk",
+      "rmse": 0.73702,
+      "rmse_vs_random_walk": 1.0,
+      "directional_accuracy": NaN,
+      "dm_stat": NaN,
+      "dm_pvalue": NaN
+    },
+    {
+      "model": "historical_mean",
+      "rmse": 0.73706,
+      "rmse_vs_random_walk": 1.00006,
+      "directional_accuracy": 0.47705,
+      "dm_stat": 0.18742,
+      "dm_pvalue": 0.85134
+    },
+    {
+      "model": "ar1",
+      "rmse": 0.73735,
+      "rmse_vs_random_walk": 1.00045,
+      "directional_accuracy": 0.47396,
+      "dm_stat": 0.95151,
+      "dm_pvalue": 0.3414
+    },
+    {
+      "model": "lightgbm",
+      "rmse": 0.74364,
+      "rmse_vs_random_walk": 1.00898,
+      "directional_accuracy": 0.49417,
+      "dm_stat": 2.84438,
+      "dm_pvalue": 0.00447
+    }
+  ],
+  "part_b_volatility": [
+    {
+      "model": "EWMA (RiskMetrics)",
+      "qlike": 1.51767,
+      "mse_sq_returns": 2.07957,
+      "dm_stat_vs_ewma": NaN,
+      "dm_pvalue_vs_ewma": NaN
+    },
+    {
+      "model": "GARCH(1,1)-t",
+      "qlike": 1.51224,
+      "mse_sq_returns": 2.02963,
+      "dm_stat_vs_ewma": -0.6747,
+      "dm_pvalue_vs_ewma": 0.4999
+    },
+    {
+      "model": "GJR-GARCH(1,1)-t",
+      "qlike": 1.50687,
+      "mse_sq_returns": 2.05991,
+      "dm_stat_vs_ewma": -0.94075,
+      "dm_pvalue_vs_ewma": 0.34689
+    },
+    {
+      "model": "GJR-GARCH(1,1)-skewed-t",
+      "qlike": 1.50737,
+      "mse_sq_returns": 2.05419,
+      "dm_stat_vs_ewma": -0.92874,
+      "dm_pvalue_vs_ewma": 0.35308
+    },
+    {
+      "model": "HAR",
+      "qlike": 1.55308,
+      "mse_sq_returns": 2.11892,
+      "dm_stat_vs_ewma": 2.44394,
+      "dm_pvalue_vs_ewma": 0.01457
+    }
+  ],
+  "part_c_var_backtest": [
+    {
+      "level": 0.95,
+      "method": "Historical simulation (250d)",
+      "expected_rate": 0.05,
+      "breach_rate": 0.05755,
+      "breaches": 242,
+      "days": 4205,
+      "kupiec_p": 0.02808,
+      "independence_p": 0.0,
+      "avg_var_pct": 1.21914,
+      "passes_both_5pct": false,
+      "worst_250d_breaches": NaN,
+      "worst_250d_zone": NaN
+    },
+    {
+      "level": 0.95,
+      "method": "EWMA, normal",
+      "expected_rate": 0.05,
+      "breach_rate": 0.06587,
+      "breaches": 277,
+      "days": 4205,
+      "kupiec_p": 1e-05,
+      "independence_p": 0.00015,
+      "avg_var_pct": 1.125,
+      "passes_both_5pct": false,
+      "worst_250d_breaches": NaN,
+      "worst_250d_zone": NaN
+    },
+    {
+      "level": 0.95,
+      "method": "GJR-GARCH, Student-t",
+      "expected_rate": 0.05,
+      "breach_rate": 0.07015,
+      "breaches": 295,
+      "days": 4205,
+      "kupiec_p": 0.0,
+      "independence_p": 0.32283,
+      "avg_var_pct": 1.07762,
+      "passes_both_5pct": false,
+      "worst_250d_breaches": NaN,
+      "worst_250d_zone": NaN
+    },
+    {
+      "level": 0.95,
+      "method": "GJR-GARCH, skewed-t",
+      "expected_rate": 0.05,
+      "breach_rate": 0.06207,
+      "breaches": 261,
+      "days": 4205,
+      "kupiec_p": 0.00053,
+      "independence_p": 0.22182,
+      "avg_var_pct": 1.13686,
+      "passes_both_5pct": false,
+      "worst_250d_breaches": NaN,
+      "worst_250d_zone": NaN
+    },
+    {
+      "level": 0.95,
+      "method": "Filtered HS (GJR-GARCH)",
+      "expected_rate": 0.05,
+      "breach_rate": 0.06017,
+      "breaches": 253,
+      "days": 4205,
+      "kupiec_p": 0.00333,
+      "independence_p": 0.13382,
+      "avg_var_pct": 1.15268,
+      "passes_both_5pct": false,
+      "worst_250d_breaches": NaN,
+      "worst_250d_zone": NaN
+    },
+    {
+      "level": 0.99,
+      "method": "Historical simulation (250d)",
+      "expected_rate": 0.01,
+      "breach_rate": 0.01641,
+      "breaches": 69,
+      "days": 4205,
+      "kupiec_p": 0.00013,
+      "independence_p": 0.00594,
+      "avg_var_pct": 1.93729,
+      "passes_both_5pct": false,
+      "worst_250d_breaches": 10.0,
+      "worst_250d_zone": "red"
+    },
+    {
+      "level": 0.99,
+      "method": "EWMA, normal",
+      "expected_rate": 0.01,
+      "breach_rate": 0.02402,
+      "breaches": 101,
+      "days": 4205,
+      "kupiec_p": 0.0,
+      "independence_p": 0.34201,
+      "avg_var_pct": 1.5911,
+      "passes_both_5pct": false,
+      "worst_250d_breaches": 11.0,
+      "worst_250d_zone": "red"
+    },
+    {
+      "level": 0.99,
+      "method": "GJR-GARCH, Student-t",
+      "expected_rate": 0.01,
+      "breach_rate": 0.01784,
+      "breaches": 75,
+      "days": 4205,
+      "kupiec_p": 0.0,
+      "independence_p": 0.75573,
+      "avg_var_pct": 1.69482,
+      "passes_both_5pct": false,
+      "worst_250d_breaches": 8.0,
+      "worst_250d_zone": "yellow"
+    },
+    {
+      "level": 0.99,
+      "method": "GJR-GARCH, skewed-t",
+      "expected_rate": 0.01,
+      "breach_rate": 0.01379,
+      "breaches": 58,
+      "days": 4205,
+      "kupiec_p": 0.0194,
+      "independence_p": 0.82729,
+      "avg_var_pct": 1.83181,
+      "passes_both_5pct": false,
+      "worst_250d_breaches": 7.0,
+      "worst_250d_zone": "yellow"
+    },
+    {
+      "level": 0.99,
+      "method": "Filtered HS (GJR-GARCH)",
+      "expected_rate": 0.01,
+      "breach_rate": 0.01189,
+      "breaches": 50,
+      "days": 4205,
+      "kupiec_p": 0.23151,
+      "independence_p": 0.62744,
+      "avg_var_pct": 1.92008,
+      "passes_both_5pct": true,
+      "worst_250d_breaches": 7.0,
+      "worst_250d_zone": "yellow"
+    }
+  ],
+  "latest_annualized_vol_forecast_pct": {
+    "EWMA (RiskMetrics)": 11.466278522746597,
+    "GARCH(1,1)-t": 11.889497654770006,
+    "GJR-GARCH(1,1)-t": 13.35366426876091,
+    "GJR-GARCH(1,1)-skewed-t": 13.292590314292646,
+    "HAR": 10.084785427319598
+  },
+  "gjr_skewt_last_params": {
+    "omega": 0.0093,
+    "alpha[1]": 0.1673,
+    "gamma[1]": -0.1125,
+    "beta[1]": 0.8671,
+    "eta": 7.2404,
+    "lambda": 0.1559
+  }
+}
